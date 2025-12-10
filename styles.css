@@ -1,0 +1,1242 @@
+/* ==================== إعدادات عامة ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* الألوان الطبيعية */
+    --primary-green: #2ecc71;
+    --dark-green: #27ae60;
+    --light-green: #a8e6cf;
+    --sky-blue: #56CCF2;
+    --sun-yellow: #f39c12;
+    --earth-brown: #8b4513;
+    --flower-pink: #ff6b9d;
+    --leaf-green: #7bed9f;
+    --water-blue: #5f27cd;
+    --cloud-white: #ffffff;
+
+    /* تدرجات جميلة */
+    --gradient-nature: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-sky: linear-gradient(180deg, #56CCF2 0%, #2F80ED 100%);
+    --gradient-earth: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-leaf: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-sun: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+
+    /* الظلال */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
+    --shadow-glow: 0 0 20px rgba(46, 204, 113, 0.5);
+
+    /* الخطوط */
+    --font-primary: 'Cairo', sans-serif;
+    --font-secondary: 'Tajawal', sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2dfdb 50%, #a5d6a7 100%);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ==================== الخلفية المتحركة ==================== */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52, 152, 219, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(241, 196, 15, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* ==================== الشخصية المرشدة ==================== */
+.mascot {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+    animation: float 3s ease-in-out infinite;
+}
+
+.mascot img {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.mascot img:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.mascot-speech {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 12px 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-green);
+    white-space: nowrap;
+    opacity: 0;
+    animation: popIn 0.5s ease forwards;
+    animation-delay: 1s;
+}
+
+.mascot-speech::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 10px solid transparent;
+    border-top-color: white;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+/* ==================== زر تبديل اللغة ==================== */
+.language-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.lang-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-primary);
+}
+
+.lang-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.lang-btn:active {
+    transform: translateY(-1px);
+}
+
+#langIcon {
+    font-size: 1.5rem;
+}
+
+/* ==================== الصفحات ==================== */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==================== الصفحة الرئيسية ==================== */
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: titlePulse 2s ease-in-out infinite;
+    line-height: 1.2;
+}
+
+.emoji {
+    display: inline-block;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.emoji:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+@keyframes titlePulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateY(-10px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    75% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.hero-banner {
+    margin: 40px 0;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 1s ease;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== الأزرار ==================== */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 5px 40px rgba(102, 126, 234, 0.8), 0 0 60px rgba(102, 126, 234, 0.4);
+    }
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--dark-green);
+    border: 2px solid var(--primary-green);
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-primary);
+    margin-top: 30px;
+}
+
+.btn-secondary:hover {
+    background: var(--primary-green);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ==================== عناوين الصفحات ==================== */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--dark-green);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+    border-radius: 2px;
+}
+
+/* ==================== شبكة القوائم ==================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 25px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.menu-card:hover::before {
+    opacity: 1;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+}
+
+.menu-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.menu-card:nth-child(1) .menu-icon {
+    animation-delay: 0s;
+}
+
+.menu-card:nth-child(2) .menu-icon {
+    animation-delay: 0.2s;
+}
+
+.menu-card:nth-child(3) .menu-icon {
+    animation-delay: 0.4s;
+}
+
+.menu-card:nth-child(4) .menu-icon {
+    animation-delay: 0.6s;
+}
+
+.menu-card:nth-child(5) .menu-icon {
+    animation-delay: 0.8s;
+}
+
+.menu-card:nth-child(6) .menu-icon {
+    animation-delay: 1s;
+}
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.menu-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.menu-card p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* ==================== شبكة الدروس ==================== */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.lesson-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.lesson-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.lesson-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1.3rem;
+    box-shadow: var(--shadow-sm);
+    z-index: 10;
+}
+
+.lesson-icon {
+    font-size: 5rem;
+    text-align: center;
+    padding: 40px 20px 20px;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.lesson-content {
+    padding: 20px;
+}
+
+.lesson-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.lesson-content p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.lesson-status {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-badge.video {
+    background: #ffe5e5;
+    color: #d63031;
+}
+
+.status-badge.exercise {
+    background: #e5f5ff;
+    color: #0984e3;
+}
+
+.status-badge.story {
+    background: #fff5e5;
+    color: #e67e22;
+}
+
+/* ==================== تفاصيل الدرس ==================== */
+.lesson-detail {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    animation: fadeIn 0.5s ease;
+}
+
+.lesson-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.lesson-header h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.lesson-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.lesson-section {
+    margin-bottom: 40px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.lesson-section h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.video-placeholder {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    padding: 60px 30px;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.exercise-item {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.exercise-item:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.exercise-item h4 {
+    color: var(--dark-green);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.story-box {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-md);
+}
+
+.story-box p {
+    margin-bottom: 15px;
+}
+
+/* ==================== الألعاب ==================== */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.game-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.game-card:hover::before {
+    left: 100%;
+}
+
+.game-card:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: var(--shadow-lg);
+}
+
+.game-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.game-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+}
+
+.game-card p {
+    color: #666;
+}
+
+/* ==================== الامتحان ==================== */
+.exam-container {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.question-card {
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--primary-green);
+}
+
+.question-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 20px;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.answer-option {
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.answer-option:hover {
+    border-color: var(--primary-green);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-sm);
+}
+
+.answer-option input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-green);
+}
+
+.answer-text {
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    padding: 15px;
+    width: 100%;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.answer-text:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+}
+
+/* ==================== الشهادة ==================== */
+.certificate-section {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.certificate-form {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.certificate-form h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+.certificate-form p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--dark-green);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #dee2e6;
+    border-radius: 15px;
+    font-family: var(--font-primary);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+}
+
+.certificate-preview {
+    background: white;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    border: 10px double var(--primary-green);
+    position: relative;
+    overflow: hidden;
+}
+
+.certificate-preview::before {
+    content: '🌟';
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.1;
+    top: 20px;
+    left: 20px;
+}
+
+.certificate-preview::after {
+    content: '🌟';
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.1;
+    bottom: 20px;
+    right: 20px;
+}
+
+.certificate-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--dark-green);
+    margin-bottom: 30px;
+}
+
+.certificate-text {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.certificate-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    margin: 30px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 15px;
+}
+
+.certificate-seal {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    margin: 20px auto;
+    box-shadow: var(--shadow-md);
+}
+
+/* ==================== نصائح الآباء ==================== */
+.parents-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.tip-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tip-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 20px;
+}
+
+.tip-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tip-card li {
+    padding: 12px 0;
+    padding-right: 30px;
+    position: relative;
+    color: #555;
+    line-height: 1.6;
+}
+
+.tip-card li::before {
+    content: '✓';
+    position: absolute;
+    right: 0;
+    color: var(--primary-green);
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+/* ==================== القصص ==================== */
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.story-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-top: 5px solid var(--flower-pink);
+}
+
+.story-card:hover {
+    transform: translateY(-8px) rotate(1deg);
+    box-shadow: var(--shadow-lg);
+}
+
+.story-card h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--dark-green);
+    margin-bottom: 15px;
+}
+
+.story-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* ==================== النافذة المنبثقة ==================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 30px;
+    padding: 50px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: var(--shadow-lg);
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    70% {
+        transform: scale(0.9);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.celebration h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.celebration p {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.stars {
+    font-size: 3rem;
+    margin: 20px 0;
+    animation: starRotate 2s ease-in-out infinite;
+}
+
+@keyframes starRotate {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+/* ==================== المؤثرات البصرية ==================== */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.particle {
+    position: absolute;
+    font-size: 2rem;
+    animation: particleFall 3s linear;
+    pointer-events: none;
+}
+
+@keyframes particleFall {
+    from {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ==================== التجاوب مع الشاشات ==================== */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    .menu-grid,
+    .lessons-grid,
+    .games-grid,
+    .stories-grid,
+    .parents-content {
+        grid-template-columns: 1fr;
+    }
+
+    .mascot {
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .mascot img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .mascot-speech {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    .lesson-detail,
+    .exam-container,
+    .certificate-form {
+        padding: 25px;
+    }
+
+    .modal-content {
+        padding: 30px;
+        margin: 20px;
+    }
+}
+
+/* ==================== الطباعة ==================== */
+@media print {
+
+    .mascot,
+    .btn-primary,
+    .btn-secondary,
+    .page:not(.active) {
+        display: none !important;
+    }
+
+    .certificate-preview {
+        page-break-inside: avoid;
+    }
+}
+
+/* ==================== لعبة الذاكرة ==================== */
+.memory-card {
+    transition: transform 0.6s;
+}
+
+.memory-card:hover:not(.matched) {
+    transform: scale(1.05) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+.memory-card.matched {
+    cursor: default !important;
+    pointer-events: none;
+}
+
+/* ==================== تأثيرات نثر الأزهار ==================== */
+.flower-particle {
+    animation: flowerFall 5s ease-out forwards !important;
+}
+
+@keyframes flowerFall {
+    0% {
+        top: -10%;
+        opacity: 1;
+        transform: translateX(0) rotate(0deg);
+    }
+
+    100% {
+        top: 110%;
+        opacity: 0;
+        transform: translateX(calc(var(--random-x, 0px))) rotate(360deg);
+    }
+}

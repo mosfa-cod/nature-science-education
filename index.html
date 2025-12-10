@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="دورة تعليمية تفاعلية للأطفال حول علوم الطبيعة والبيئة">
+    <title>🌱 علوم الطبيعة والبيئة - دورة تعليمية تفاعلية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Tajawal:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- زر تغيير اللغة -->
+    <div class="language-switcher" id="langSwitcher">
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <span id="langIcon">🇬🇧</span>
+            <span id="langText">English</span>
+        </button>
+    </div>
+
+    <!-- شخصية المرشد -->
+    <div class="mascot" id="mascot">
+        <img src="mascot.png" alt="شجرة المعرفة">
+        <div class="mascot-speech" id="mascotSpeech">
+            مرحباً! أنا شجرة المعرفة 🌳
+        </div>
+    </div>
+
+    <!-- الصفحة الرئيسية -->
+    <div class="page active" id="homePage">
+        <div class="hero-section">
+            <div class="hero-content">
+                <h1 class="main-title">
+                    <span class="emoji">🌍</span>
+                    علوم الطبيعة والبيئة
+                    <span class="emoji">🌱</span>
+                </h1>
+                <p class="hero-subtitle">رحلة تعليمية رائعة للأطفال من 6-12 سنة</p>
+                <div class="hero-banner">
+                    <img src="banner.png" alt="الطبيعة والبيئة">
+                </div>
+                <button class="btn-primary btn-glow" onclick="showPage('menuPage')">
+                    🚀 ابدأ الرحلة التعليمية
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- القائمة الرئيسية -->
+    <div class="page" id="menuPage">
+        <div class="container">
+            <h2 class="page-title">📚 القائمة الرئيسية</h2>
+
+            <div class="menu-grid">
+                <div class="menu-card" onclick="showPage('lessonsPage')">
+                    <div class="menu-icon">📖</div>
+                    <h3>الدروس التعليمية</h3>
+                    <p>10 دروس تفاعلية رائعة</p>
+                </div>
+
+                <div class="menu-card" onclick="showPage('gamesPage')">
+                    <div class="menu-icon">🎮</div>
+                    <h3>الألعاب التعليمية</h3>
+                    <p>ألعاب ممتعة ومفيدة</p>
+                </div>
+
+                <div class="menu-card" onclick="showPage('storiesPage')">
+                    <div class="menu-icon">📚</div>
+                    <h3>القصص التعليمية</h3>
+                    <p>قصص شيقة ومفيدة</p>
+                </div>
+
+                <div class="menu-card" onclick="showPage('examPage')">
+                    <div class="menu-icon">📝</div>
+                    <h3>الامتحان النهائي</h3>
+                    <p>اختبر معلوماتك</p>
+                </div>
+
+                <div class="menu-card" onclick="showPage('certificatesPage')">
+                    <div class="menu-icon">🏆</div>
+                    <h3>الشهادات</h3>
+                    <p>شهادات الإكمال</p>
+                </div>
+
+                <div class="menu-card" onclick="showPage('parentsPage')">
+                    <div class="menu-icon">👨‍👩‍👧</div>
+                    <h3>نصائح للآباء</h3>
+                    <p>إرشادات للأهل</p>
+                </div>
+            </div>
+
+            <button class="btn-secondary" onclick="showPage('homePage')">
+                ← العودة للرئيسية
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحة الدروس -->
+    <div class="page" id="lessonsPage">
+        <div class="container">
+            <h2 class="page-title">📖 الدروس التعليمية</h2>
+
+            <div class="lessons-grid" id="lessonsGrid">
+                <!-- سيتم إضافة الدروس ديناميكياً -->
+            </div>
+
+            <button class="btn-secondary" onclick="showPage('menuPage')">
+                ← العودة للقائمة
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحة الدرس الفردي -->
+    <div class="page" id="lessonDetailPage">
+        <div class="container">
+            <div class="lesson-detail" id="lessonDetailContent">
+                <!-- سيتم إضافة محتوى الدرس ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الألعاب -->
+    <div class="page" id="gamesPage">
+        <div class="container">
+            <h2 class="page-title">🎮 الألعاب التعليمية</h2>
+
+            <div class="games-grid">
+                <div class="game-card" onclick="playGame('matching')">
+                    <div class="game-icon">🎯</div>
+                    <h3>لعبة المطابقة</h3>
+                    <p>طابق الصور مع الأسماء</p>
+                </div>
+
+                <div class="game-card" onclick="playGame('quiz')">
+                    <div class="game-icon">❓</div>
+                    <h3>لعبة الأسئلة</h3>
+                    <p>أجب على الأسئلة</p>
+                </div>
+
+                <div class="game-card" onclick="playGame('puzzle')">
+                    <div class="game-icon">🧩</div>
+                    <h3>لعبة الألغاز</h3>
+                    <p>اكمل الألغاز البيئية</p>
+                </div>
+
+                <div class="game-card" onclick="playGame('memory')">
+                    <div class="game-icon">🃏</div>
+                    <h3>لعبة الذاكرة</h3>
+                    <p>اختبر ذاكرتك</p>
+                </div>
+            </div>
+
+            <button class="btn-secondary" onclick="showPage('menuPage')">
+                ← العودة للقائمة
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحة القصص -->
+    <div class="page" id="storiesPage">
+        <div class="container">
+            <h2 class="page-title">📚 القصص التعليمية</h2>
+
+            <div class="stories-grid" id="storiesGrid">
+                <!-- سيتم إضافة القصص ديناميكياً -->
+            </div>
+
+            <button class="btn-secondary" onclick="showPage('menuPage')">
+                ← العودة للقائمة
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحة الامتحان -->
+    <div class="page" id="examPage">
+        <div class="container">
+            <h2 class="page-title">📝 الامتحان النهائي</h2>
+
+            <div class="exam-container" id="examContainer">
+                <!-- سيتم إضافة الأسئلة ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الشهادات -->
+    <div class="page" id="certificatesPage">
+        <div class="container">
+            <h2 class="page-title">🏆 شهادات الإكمال</h2>
+
+            <div class="certificate-section">
+                <div class="certificate-form">
+                    <h3>احصل على شهادتك</h3>
+                    <p>أكمل جميع الدروس والامتحان للحصول على الشهادة</p>
+
+                    <div class="form-group">
+                        <label>اسم الطالب:</label>
+                        <input type="text" id="studentName" placeholder="أدخل اسمك">
+                    </div>
+
+                    <button class="btn-primary" onclick="generateCertificate()">
+                        🎓 احصل على الشهادة
+                    </button>
+                </div>
+
+                <div class="certificate-preview" id="certificatePreview">
+                    <!-- سيتم عرض الشهادة هنا -->
+                </div>
+            </div>
+
+            <button class="btn-secondary" onclick="showPage('menuPage')">
+                ← العودة للقائمة
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحة نصائح الآباء -->
+    <div class="page" id="parentsPage">
+        <div class="container">
+            <h2 class="page-title">👨‍👩‍👧 نصائح للآباء</h2>
+
+            <div class="parents-content">
+                <div class="tip-card">
+                    <h3>💡 كيف تساعد طفلك؟</h3>
+                    <ul>
+                        <li>شجع الطفل على استكشاف الطبيعة بنفسه</li>
+                        <li>اجعل التعلم تجربة ممتعة وليس واجباً</li>
+                        <li>احتفل بالإنجازات الصغيرة</li>
+                        <li>ناقش ما يتعلمه الطفل معه</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>🌱 أنشطة عملية</h3>
+                    <ul>
+                        <li>زراعة نباتات بسيطة في المنزل</li>
+                        <li>زيارة الحدائق والمتنزهات</li>
+                        <li>مراقبة الطيور والحشرات</li>
+                        <li>تجارب علمية بسيطة في المنزل</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>📊 متابعة التقدم</h3>
+                    <ul>
+                        <li>راجع الدروس المكتملة بانتظام</li>
+                        <li>تحقق من نتائج التمارين</li>
+                        <li>ناقش الأخطاء بطريقة إيجابية</li>
+                        <li>احتفل بالنجاحات</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h3>⏰ الوقت المناسب</h3>
+                    <ul>
+                        <li>20-30 دقيقة يومياً كافية</li>
+                        <li>اختر وقتاً هادئاً بدون تشتيت</li>
+                        <li>لا تجبر الطفل إذا كان متعباً</li>
+                        <li>اجعله روتيناً ممتعاً</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="btn-secondary" onclick="showPage('menuPage')">
+                ← العودة للقائمة
+            </button>
+        </div>
+    </div>
+
+    <!-- صفحة اللعبة -->
+    <div class="page" id="gamePage">
+        <div class="container">
+            <div id="gameContent">
+                <!-- سيتم إضافة محتوى اللعبة ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة منبثقة للتهاني -->
+    <div class="modal" id="congratsModal">
+        <div class="modal-content celebration">
+            <h2>🎉 أحسنت! 🎉</h2>
+            <p id="congratsMessage"></p>
+            <div class="stars">⭐⭐⭐</div>
+            <button class="btn-primary" onclick="closeModal()">رائع!</button>
+        </div>
+    </div>
+
+    <!-- المؤثرات البصرية -->
+    <div class="particles" id="particles"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
