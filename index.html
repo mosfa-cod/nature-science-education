@@ -37,15 +37,15 @@
             <div class="hero-content">
                 <h1 class="main-title">
                     <span class="emoji">🌍</span>
-                    علوم الطبيعة والبيئة
+                    <span data-i18n="mainTitle">علوم الطبيعة والبيئة</span>
                     <span class="emoji">🌱</span>
                 </h1>
-                <p class="hero-subtitle">رحلة تعليمية رائعة للأطفال من 6-12 سنة</p>
+                <p class="hero-subtitle" data-i18n="heroSubtitle">رحلة تعليمية رائعة للأطفال من 6-12 سنة</p>
                 <div class="hero-banner">
                     <img src="banner.png" alt="الطبيعة والبيئة">
                 </div>
                 <button class="btn-primary btn-glow" onclick="showPage('menuPage')">
-                    🚀 ابدأ الرحلة التعليمية
+                    <span data-i18n="startButton">🚀 ابدأ الرحلة التعليمية</span>
                 </button>
             </div>
         </div>
@@ -54,48 +54,48 @@
     <!-- القائمة الرئيسية -->
     <div class="page" id="menuPage">
         <div class="container">
-            <h2 class="page-title">📚 القائمة الرئيسية</h2>
+            <h2 class="page-title">📚 <span data-i18n="mainMenu">القائمة الرئيسية</span></h2>
 
             <div class="menu-grid">
                 <div class="menu-card" onclick="showPage('lessonsPage')">
                     <div class="menu-icon">📖</div>
-                    <h3>الدروس التعليمية</h3>
-                    <p>10 دروس تفاعلية رائعة</p>
+                    <h3 data-i18n="lessons">الدروس التعليمية</h3>
+                    <p data-i18n="lessonsDesc">10 دروس تفاعلية رائعة</p>
                 </div>
 
                 <div class="menu-card" onclick="showPage('gamesPage')">
                     <div class="menu-icon">🎮</div>
-                    <h3>الألعاب التعليمية</h3>
-                    <p>ألعاب ممتعة ومفيدة</p>
+                    <h3 data-i18n="games">الألعاب التعليمية</h3>
+                    <p data-i18n="gamesDesc">ألعاب ممتعة ومفيدة</p>
                 </div>
 
                 <div class="menu-card" onclick="showPage('storiesPage')">
                     <div class="menu-icon">📚</div>
-                    <h3>القصص التعليمية</h3>
-                    <p>قصص شيقة ومفيدة</p>
+                    <h3 data-i18n="stories">القصص التعليمية</h3>
+                    <p data-i18n="storiesDesc">قصص شيقة ومفيدة</p>
                 </div>
 
                 <div class="menu-card" onclick="showPage('examPage')">
                     <div class="menu-icon">📝</div>
-                    <h3>الامتحان النهائي</h3>
-                    <p>اختبر معلوماتك</p>
+                    <h3 data-i18n="exam">الامتحان النهائي</h3>
+                    <p data-i18n="examDesc">اختبر معلوماتك</p>
                 </div>
 
                 <div class="menu-card" onclick="showPage('certificatesPage')">
                     <div class="menu-icon">🏆</div>
-                    <h3>الشهادات</h3>
-                    <p>شهادات الإكمال</p>
+                    <h3 data-i18n="certificates">الشهادات</h3>
+                    <p data-i18n="certificatesDesc">شهادات الإكمال</p>
                 </div>
 
                 <div class="menu-card" onclick="showPage('parentsPage')">
                     <div class="menu-icon">👨‍👩‍👧</div>
-                    <h3>نصائح للآباء</h3>
-                    <p>إرشادات للأهل</p>
+                    <h3 data-i18n="parents">نصائح للآباء</h3>
+                    <p data-i18n="parentsDesc">إرشادات للأهل</p>
                 </div>
             </div>
 
             <button class="btn-secondary" onclick="showPage('homePage')">
-                ← العودة للرئيسية
+                <span data-i18n="backToHome">← العودة للرئيسية</span>
             </button>
         </div>
     </div>
@@ -103,14 +103,14 @@
     <!-- صفحة الدروس -->
     <div class="page" id="lessonsPage">
         <div class="container">
-            <h2 class="page-title">📖 الدروس التعليمية</h2>
+            <h2 class="page-title">📖 <span data-i18n="lessons">الدروس التعليمية</span></h2>
 
             <div class="lessons-grid" id="lessonsGrid">
                 <!-- سيتم إضافة الدروس ديناميكياً -->
             </div>
 
             <button class="btn-secondary" onclick="showPage('menuPage')">
-                ← العودة للقائمة
+                <span data-i18n="backToMenu">← العودة للقائمة</span>
             </button>
         </div>
     </div>
@@ -127,7 +127,7 @@
     <!-- صفحة الألعاب -->
     <div class="page" id="gamesPage">
         <div class="container">
-            <h2 class="page-title">🎮 الألعاب التعليمية</h2>
+            <h2 class="page-title">🎮 <span data-i18n="games">الألعاب التعليمية</span></h2>
 
             <div class="games-grid">
                 <div class="game-card" onclick="playGame('matching')">
@@ -156,7 +156,7 @@
             </div>
 
             <button class="btn-secondary" onclick="showPage('menuPage')">
-                ← العودة للقائمة
+                <span data-i18n="backToMenu">← العودة للقائمة</span>
             </button>
         </div>
     </div>
@@ -164,14 +164,14 @@
     <!-- صفحة القصص -->
     <div class="page" id="storiesPage">
         <div class="container">
-            <h2 class="page-title">📚 القصص التعليمية</h2>
+            <h2 class="page-title">📚 <span data-i18n="stories">القصص التعليمية</span></h2>
 
             <div class="stories-grid" id="storiesGrid">
                 <!-- سيتم إضافة القصص ديناميكياً -->
             </div>
 
             <button class="btn-secondary" onclick="showPage('menuPage')">
-                ← العودة للقائمة
+                <span data-i18n="backToMenu">← العودة للقائمة</span>
             </button>
         </div>
     </div>
@@ -179,7 +179,7 @@
     <!-- صفحة الامتحان -->
     <div class="page" id="examPage">
         <div class="container">
-            <h2 class="page-title">📝 الامتحان النهائي</h2>
+            <h2 class="page-title">📝 <span data-i18n="exam">الامتحان النهائي</span></h2>
 
             <div class="exam-container" id="examContainer">
                 <!-- سيتم إضافة الأسئلة ديناميكياً -->
@@ -190,7 +190,7 @@
     <!-- صفحة الشهادات -->
     <div class="page" id="certificatesPage">
         <div class="container">
-            <h2 class="page-title">🏆 شهادات الإكمال</h2>
+            <h2 class="page-title">🏆 <span data-i18n="certificates">شهادات الإكمال</span></h2>
 
             <div class="certificate-section">
                 <div class="certificate-form">
@@ -213,7 +213,7 @@
             </div>
 
             <button class="btn-secondary" onclick="showPage('menuPage')">
-                ← العودة للقائمة
+                <span data-i18n="backToMenu">← العودة للقائمة</span>
             </button>
         </div>
     </div>
@@ -221,7 +221,7 @@
     <!-- صفحة نصائح الآباء -->
     <div class="page" id="parentsPage">
         <div class="container">
-            <h2 class="page-title">👨‍👩‍👧 نصائح للآباء</h2>
+            <h2 class="page-title">👨‍👩‍👧 <span data-i18n="parents">نصائح للآباء</span></h2>
 
             <div class="parents-content">
                 <div class="tip-card">

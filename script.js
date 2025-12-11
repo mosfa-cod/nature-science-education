@@ -240,10 +240,24 @@ function toggleLanguage() {
     location.reload();
 }
 
+// تحديث المحتوى النصي الثابت
+function updateStaticContent() {
+    const elements = document.querySelectorAll('[data-i18n]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[currentLang] && translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+        }
+    });
+}
+
 // تطبيق اللغة عند التحميل
 function applyLanguage() {
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+    // تحديث المحتوى الثابت
+    updateStaticContent();
 
     // تحديث زر اللغة
     const langIcon = document.getElementById('langIcon');
@@ -563,7 +577,7 @@ function loadLessons() {
         lessonCard.onclick = () => showLessonDetail(lesson.id);
 
         lessonCard.innerHTML = `
-    < div class="lesson-number" > ${lesson.id}</div >
+            <div class="lesson-number">${lesson.id}</div>
             <div class="lesson-icon">${lesson.icon}</div>
             <div class="lesson-content">
                 <h3>${lesson.title}</h3>
@@ -588,7 +602,7 @@ function showLessonDetail(lessonId) {
 
     const detailContent = document.getElementById('lessonDetailContent');
     detailContent.innerHTML = `
-    < div class="lesson-header" >
+        <div class="lesson-header">
             <h2>${lesson.icon} ${lesson.title}</h2>
             <p>${lesson.description}</p>
         </div >
@@ -707,7 +721,7 @@ function showStory(lessonId) {
 function loadExam() {
     const examContainer = document.getElementById('examContainer');
     examContainer.innerHTML = `
-    < div style = "text-align: center; margin-bottom: 40px;" >
+        <div style="text-align: center; margin-bottom: 40px;">
             <h3 style="font-size: 2rem; color: var(--dark-green); margin-bottom: 15px;">
                 📝 اختبر معلوماتك
             </h3>
@@ -789,7 +803,7 @@ function submitExam() {
     }
 
     showCelebration(`
-    < h2 style = "font-size: 3rem; margin-bottom: 20px;" > ${emoji}</h2 >
+        <h2 style="font-size: 3rem; margin-bottom: 20px;">${emoji}</h2>
         <h3 style="font-size: 2rem; color: var(--primary-green); margin-bottom: 20px;">
             نتيجة الامتحان
         </h3>
@@ -842,7 +856,7 @@ function playGame(gameType) {
     const game = games[gameType];
 
     gameContent.innerHTML = `
-    < div class="lesson-detail" >
+        <div class="lesson-detail">
             <div class="lesson-header">
                 <h2>${game.title}</h2>
                 <p>${game.description}</p>
@@ -1143,7 +1157,7 @@ function checkQuizAdvanced() {
 
 function createPuzzleGame() {
     return `
-    < div style = "text-align: center;" >
+        <div style="text-align: center;">
             <div style="font-size: 8rem; margin: 40px 0;">
                 🧩
             </div>
@@ -1166,7 +1180,7 @@ function createPuzzleGame() {
 
 function createMemoryGame() {
     return `
-    < div style = "max-width: 700px; margin: 0 auto;" >
+        <div style="max-width: 700px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 30px;">
                 <h3 style="color: var(--dark-green); margin-bottom: 20px;">اختر مستوى اللعبة:</h3>
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
@@ -1238,7 +1252,7 @@ function renderMemoryBoard() {
     const gridCols = gameLevel === 'easy' ? 4 : 4;
 
     board.innerHTML = `
-    < div style = "display: grid; grid-template-columns: repeat(${gridCols}, 1fr); gap: 12px;" >
+        <div style="display: grid; grid-template-columns: repeat(${gridCols}, 1fr); gap: 12px;">
         ${memoryCards.map((emoji, index) => `
                 <div 
                     class="memory-card" 
@@ -1405,7 +1419,7 @@ function generateCertificate() {
 
     const certificatePreview = document.getElementById('certificatePreview');
     certificatePreview.innerHTML = `
-    < div class="certificate-title" >
+        <div class="certificate-title">
             🏆 شهادة إتمام الدورة 🏆
         </div >
         
