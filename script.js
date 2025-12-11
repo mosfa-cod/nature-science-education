@@ -694,8 +694,8 @@ function loadStories() {
         storyCard.onclick = () => showStory(lesson.id);
 
         storyCard.innerHTML = `
-    < h3 > ${lesson.icon} ${lesson.story.title}</h3 >
-        <p>${lesson.story.content.substring(0, 150)}...</p>
+            <h3>${lesson.icon} ${lesson.story.title}</h3>
+            <p>${lesson.story.content.substring(0, 150)}...</p>
 `;
 
         storiesGrid.appendChild(storyCard);
@@ -707,12 +707,12 @@ function showStory(lessonId) {
     if (!lesson) return;
 
     showCelebration(`
-    < h2 style = "font-size: 2.5rem; color: var(--dark-green); margin-bottom: 20px;" >
-        ${lesson.icon} ${lesson.story.title}
-        </h2 >
-    <div style="text-align: right; line-height: 1.8; font-size: 1.1rem; max-height: 400px; overflow-y: auto; padding: 20px;">
-        ${lesson.story.content}
-    </div>
+        <h2 style="font-size: 2.5rem; color: var(--dark-green); margin-bottom: 20px;">
+            ${lesson.icon} ${lesson.story.title}
+        </h2>
+        <div style="text-align: right; line-height: 1.8; font-size: 1.1rem; max-height: 400px; overflow-y: auto; padding: 20px;">
+            ${lesson.story.content}
+        </div>
 `);
 }
 
@@ -772,12 +772,12 @@ function submitExam() {
 
     examQuestions.forEach(q => {
         if (q.type === 'multiple') {
-            const selected = document.querySelector(`input[name = "question${q.id}"]: checked`);
+            const selected = document.querySelector(`input[name="question${q.id}"]:checked`);
             if (selected && parseInt(selected.value) === q.correct) {
                 score++;
             }
         } else {
-            const answer = document.getElementById(`answer${q.id} `).value.trim();
+            const answer = document.getElementById(`answer${q.id}`).value.trim();
             if (answer.length > 10) { // أي إجابة معقولة
                 score++;
             }
@@ -1283,7 +1283,7 @@ function renderMemoryBoard() {
 }
 
 function flipMemoryCard(index, emoji) {
-    const card = document.getElementById(`card - ${index} `);
+    const card = document.getElementById(`card-${index}`);
 
     // تجاهل إذا كانت البطاقة مقلوبة أو متطابقة
     if (flippedCards.includes(index) || card.classList.contains('matched')) {
@@ -1313,8 +1313,8 @@ function flipMemoryCard(index, emoji) {
 
 function checkMemoryMatch() {
     const [index1, index2] = flippedCards;
-    const card1 = document.getElementById(`card - ${index1} `);
-    const card2 = document.getElementById(`card - ${index2} `);
+    const card1 = document.getElementById(`card-${index1}`);
+    const card2 = document.getElementById(`card-${index2}`);
     const emoji1 = memoryCards[index1];
     const emoji2 = memoryCards[index2];
 
